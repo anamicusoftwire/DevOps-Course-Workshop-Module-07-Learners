@@ -13,9 +13,14 @@ pipeline {
                 }
             }
             stages {
-                stage('Build') {
+                stage('Build Dotnet') {
                     steps {
                         sh 'dotnet build'
+                    }
+                }
+                stage('Test Dotnet') {
+                    steps {
+                        sh 'dotnet test'
                     }
                 }
             }
