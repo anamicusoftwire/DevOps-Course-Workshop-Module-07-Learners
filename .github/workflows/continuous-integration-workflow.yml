@@ -17,3 +17,5 @@ jobs:
         node-version: '14'
     - name: Install packages
       run: cd DotnetTemplate.Web && npm install
+    - name: Build app
+      run: cd DotnetTemplate.Web && npm run build
