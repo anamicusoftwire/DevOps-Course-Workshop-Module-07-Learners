@@ -25,5 +25,29 @@ pipeline {
                 }
             }
         }
+        stage('Typescript') {
+            agent {
+                docker {
+                    image 'node:17-bullseye'
+                }
+            }
+            stages {
+                stage('Build Typescript') {
+                    steps {
+                        dir('DotnetTemplate.Web/') {
+                            sh 'npm install'
+                            sh 'npm run build'
+                        }
+                    }
+                }
+                stage('Test Typescript') {
+                    steps {
+                        dir('DotnetTemplate.Web/') {
+                            sh 'npm test'
+                        }
+                    }
+                }
+            }
+        }
     }
 }
