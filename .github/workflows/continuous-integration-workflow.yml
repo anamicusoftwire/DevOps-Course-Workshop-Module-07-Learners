@@ -21,3 +21,5 @@ jobs:
       run: cd DotnetTemplate.Web && npm run build
     - name: Run linter
       run: cd DotnetTemplate.Web && npm run lint
+    - name: Run typescript tests
+      run: cd DotnetTemplate.Web && npm run test-with-coverage
