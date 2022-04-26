@@ -11,3 +11,7 @@ jobs:
       run: dotnet build
     - name: Test
       run: dotnet test
+    - name: Setup Node 
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
