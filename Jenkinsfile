@@ -1,20 +1,17 @@
 pipeline {
-    agent any
+    agent none
 
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
+        stage('Dotnet') {
+            agent {
+                image 'mcr.microsoft.com/dotnet/sdk:6.0'
             }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+            stages {
+                stage('Build') {
+                    steps {
+                        sh 'dotnet build'
+                    }
+                }
             }
         }
     }
