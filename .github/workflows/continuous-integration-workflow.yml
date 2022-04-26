@@ -20,4 +20,4 @@ jobs:
     - name: Build app
       run: cd DotnetTemplate.Web && npm run build
     - name: Run linter
-      run: npm run lint
+      run: cd DotnetTemplate.Web && npm run lint
