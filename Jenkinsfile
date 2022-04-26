@@ -1,9 +1,9 @@
 pipeline {
     agent none
 
-    // environment {
-    //     DOTNET_CLI_HOME = "/tmp/DOTNET_CLI_HOME"
-    // }
+    environment {
+        DOTNET_CLI_HOME = "/tmp/DOTNET_CLI_HOME"
+    }
 
     stages {
         stage('Dotnet') {
