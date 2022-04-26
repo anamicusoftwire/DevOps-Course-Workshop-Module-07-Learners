@@ -47,6 +47,13 @@ pipeline {
                         }
                     }
                 }
+                stage('Linter Typescript') {
+                    steps {
+                        dir ("DotnetTemplate.Web/") {
+                            sh "npm run lint"
+                        }
+                    }
+                }
             }
         }
     }
