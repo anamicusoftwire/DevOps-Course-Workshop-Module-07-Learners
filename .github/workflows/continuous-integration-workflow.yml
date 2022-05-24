@@ -53,16 +53,14 @@ jobs:
   deploy:
     name: Deploy on Heroku
     runs-on: ubuntu-latest
-    if: github.ref_name == 'module-8'
+    if: github.ref_name == 'main'
     needs: docker
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          ref: 'module-8'
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: 'anamic-dotnettemplate'
-          heroku_email: 'ana.micu@softwire.com' 
+          heroku_email: 'ana.micu@softwire.com'
