@@ -54,7 +54,6 @@ jobs:
     name: Deploy on Heroku
     runs-on: ubuntu-latest
     if: github.ref_name == 'main'
-    # needs: docker
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -65,3 +64,4 @@ jobs:
           heroku_app_name: 'anamic-dotnettemplate'
           heroku_email: 'ana.micu@softwire.com'
           dontuseforce: false
+          usedocker: true
