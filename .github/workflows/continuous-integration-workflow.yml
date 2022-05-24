@@ -30,8 +30,8 @@ jobs:
     - name: Run typescript tests
       run: cd DotnetTemplate.Web && npm run test-with-coverage
 
-  deploy:
-    name: Deploy
+  docker:
+    name: Build docker image
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -49,3 +49,18 @@ jobs:
 
       - name: Docker push
         run: docker push anamic/dotnettemplate:${{ github.ref_name }}
+
+  deploy:
+    name: Deploy on Heroku
+    runs-on: ubuntu-latest
+    if: github.ref_name == 'module-8'
+    needs: docker
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: 'anamic-dotnettemplate'
+          heroku_email: 'ana.micu@softwire.com' 
