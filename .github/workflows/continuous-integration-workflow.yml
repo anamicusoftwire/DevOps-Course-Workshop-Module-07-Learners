@@ -31,9 +31,8 @@ jobs:
       run: cd DotnetTemplate.Web && npm run test-with-coverage
 
   deploy:
-    if: github.ref_name == 'module-8'
     name: Deploy
-    # needs: build
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -46,7 +45,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Docker build
-        run: docker build -t anamic/dotnettemplate .
+        run: docker build -t anamic/dotnettemplate:${{ github.ref_name }} . 
 
       - name: Docker push
-        run: docker push anamic/dotnettemplate
+        run: docker push anamic/dotnettemplate:${{ github.ref_name }}
