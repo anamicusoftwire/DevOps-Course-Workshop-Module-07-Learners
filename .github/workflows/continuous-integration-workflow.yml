@@ -54,7 +54,7 @@ jobs:
     name: Deploy on Heroku
     runs-on: ubuntu-latest
     if: github.ref_name == 'main'
-    needs: docker
+    # needs: docker
     steps:
       - name: Checkout
         uses: actions/checkout@v3
