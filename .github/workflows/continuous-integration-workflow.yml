@@ -31,6 +31,7 @@ jobs:
       run: cd DotnetTemplate.Web && npm run test-with-coverage
 
   deploy:
+    if: github.ref_name == 'module-8'
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
