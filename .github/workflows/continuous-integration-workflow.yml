@@ -32,7 +32,7 @@ jobs:
 
   docker:
     name: Build docker image
-    needs: build
+    # needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -58,6 +58,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          ref: 'module-8'
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
