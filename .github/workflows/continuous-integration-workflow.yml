@@ -63,5 +63,4 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: 'anamic-dotnettemplate'
           heroku_email: 'ana.micu@softwire.com'
-          dontuseforce: false
           usedocker: true
